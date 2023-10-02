@@ -1,0 +1,7 @@
+function greeting()
+{
+	echo -Hello, there...
+	echo ~GENERAL ${1^^} ${2^^}.
+	echo *$3
+}
+greeting $1 $2 $3

@@ -1,0 +1,7 @@
+function get()
+{
+	return $1
+}
+get $1
+a=$?
+echo $a

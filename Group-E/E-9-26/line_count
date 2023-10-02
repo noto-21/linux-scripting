@@ -1,0 +1,7 @@
+function lines()
+{
+	wc -l $1
+}
+num_lines=$(lines $1)
+echo $num_lines
+

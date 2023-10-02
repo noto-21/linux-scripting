@@ -1,0 +1,6 @@
+function get_date()
+{
+	date
+}
+get_date
+

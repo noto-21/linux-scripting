@@ -1,0 +1,7 @@
+function greeting()
+{
+	echo -Hello there...
+	echo ~GENERAL KENOBI.
+}
+greeting
+
