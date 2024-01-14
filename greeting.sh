@@ -36,5 +36,6 @@ fi
 echo "$year";  # Year + Time
 echo;
 ncal -3wb;  # Calendar
+echo;
 curl wttr.in/?m0;  # Weather
 echo;
