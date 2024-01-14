@@ -37,5 +37,5 @@ echo "$year";  # Year + Time
 echo;
 ncal -3wb;  # Calendar
 echo;
-curl wttr.in/?m0;  # Weather
+curl wttr.in/"$loc"?m0;  # Weather (change 'loc' or 'loc_short' for location-specific weather data)
 echo;
