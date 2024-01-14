@@ -15,7 +15,7 @@ day=$(date -d "$date_spec" +%-d);  # The numerical day of the month
 day_ldig=$((day % 10));  # Last digit of the numerical day
 time=$(date +"%I:%M %p");  # Time
 loc="";  # Location
-loc_short=""
+loc_short=""  # Local Airport Code
 
 echo "| $time";
 echo -n "| $week_mo";  # Day of week + month abbrev.
