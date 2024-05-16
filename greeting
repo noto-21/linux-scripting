@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Clear console
+clear
+
+# Function to get date information
+get_date_info() 
+{
+    local date_spec="$1"
+    month=$(date -d "$date_spec" +"%b")
+    if [ "$month" == "May" ]; then
+        week_mo=$(date -d "$date_spec" +"%A, %b")
+    else
+        week_mo=$(date -d "$date_spec" +"%A, %b.")
+    fi
+    year=$(date -d "$date_spec" +"%Y")
+    day=$(date -d "$date_spec" +%-d)
+    time=$(date +"%I:%M %p")
+    day_suffix=("st" "nd" "rd" "th")
+    day_ldig=$((day % 10))
+    if [ "$day" -eq 11 ] || [ "$day" -eq 12 ] || [ "$day" -eq 13 ]; then
+        day_suffix_idx=3
+    elif [ "$day_ldig" -eq 1 ]; then
+        day_suffix_idx=0
+    elif [ "$day_ldig" -eq 2 ]; then
+        day_suffix_idx=1
+    elif [ "$day_ldig" -eq 3 ]; then
+        day_suffix_idx=2
+    else
+        day_suffix_idx=3
+    fi
+}
+
+# Function to display date information
+display_date_info() 
+{
+    echo "| $time"
+    echo -n "| $week_mo $day${day_suffix[day_suffix_idx]}, $year"
+    # if [ "$month" == "Your Birth Month" ] && [ "$day" -eq "Your Birth Day as an int" ]; then
+    	# echo " --> Happy Birthday!"
+    # else
+    	# echo
+    # fi
+    # echo
+}
+
+# Main function
+main() 
+{
+    local date_spec="Today"
+
+    get_date_info "$date_spec"
+
+    display_date_info | pv -qL 10
+
+    # Display calendar
+    ncal -3wb
+	
+    # List tasks
+    task list
+
+    # Display weather
+    curl -m 2 wttr.in/"YourLocationHere"?m0
+}
+
+# Call main function
+main
